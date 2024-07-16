@@ -1,0 +1,62 @@
+1: # not used here, done manually
+    suspectFragments: 3
+    retention: 12
+2a:
+    or:
+        - individualMoNAScore:
+            min: 0.9
+            higherThanNext: .inf
+        - libMatch:
+            min: 0.9
+            higherThanNext: .inf
+    rank:
+        max: 1
+        type: compound
+# 3a is reserved for confirmations: good correspondence with standard, but still not discernable from all isomers
+3b:
+    annMSMSSim:
+        type: compound
+        min: 0.9
+    fragScore: # also check fragScore, since we cannot use higherThanNext with annMSMSSim
+        relative: true
+        min: 0.9
+        higherThanNext: .inf
+    rank:
+        max: 1
+        type: compound
+3c:
+    or:
+        - individualMoNAScore: 0.7 # increased from default 0.4
+        - libMatch: 0.7 # idem
+3d:
+    annMSMSSim:
+        type: compound
+        min: 0.7
+4a:
+    annMSMSSim:
+        type: formula
+        min: 0.7
+    isoScore:
+        min: 0.5
+        higherThanNext: 0.2
+    rank:
+        max: 1
+        type: formula
+4b:
+    annMSMSSim:
+        type: formula
+        min: 0.9
+    isoScore:
+        min: 0.5
+    rank:
+        max: 1
+        type: formula
+4c:
+    isoScore:
+        min: 0.9
+        higherThanNext: 0.2
+    rank:
+        max: 1
+        type: formula
+5:
+    all: yes

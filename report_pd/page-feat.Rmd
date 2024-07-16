@@ -1,0 +1,39 @@
+```{r results='asis'}
+cat(sprintf("### %s\n\n", template$header))
+```
+
+:::: {class="row2"}
+
+::: {style="display: flex; justify-content: center; flex-direction: column;"}
+
+```{r results='asis'}
+cat(sprintf("<div style=\"text-align: center; width: 100%%; font-style: italic;\">%s</div>", template$chromHeader))
+mdImg(template$chrom, mh = 250, s = "width: 100%;")
+```
+
+:::
+
+::: {style="display: flex; justify-content: center; flex-direction: column;"}
+
+```{r results='asis'}
+mdImg(template$regr, mh = 175)
+```
+
+```{r}
+cols <- sub("RSQ", "R<sup>2</sup>", names(template$expTab))
+cols <- sub("^mix_", "mix ", names(template$expTab))
+cols <- sprintf("<span style=\"white-space: nowrap\">%s</span>", cols)
+kab <- knitr::kable(template$expTab, escape = FALSE, format = "html", align = "lrrrrrrrr", col.names = cols) |>
+    kableExtra::kable_styling(full_width = FALSE, font_size = 10, position = "left") |>
+    kableExtra::column_spec(1, width = "5em") |>
+    kableExtra::column_spec(2:9, width = "3em") |>
+    kableExtra::row_spec(template$expTabRowsNSig, color = "grey")
+if (nzchar(template$remarks))
+    kab <- kableExtra::footnote(kab, general = template$remarks, general_title = "Remarks: ", footnote_as_chunk = TRUE,
+                                escape = FALSE)
+kab
+```
+
+:::
+
+::::

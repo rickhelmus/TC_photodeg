@@ -1,0 +1,47 @@
+```{r results='asis'}
+cat(sprintf("#### %s\n\n", template$header))
+```
+
+::: {style="display: flex; flex-wrap: nowrap; justify-content: space-evenly; align-items: center;"}
+
+```{r results='asis'}
+if (!is.null(template[["structs"]]))
+{
+    mdImg(template$structs[1], mh = 125, s = "padding 0px 40px; max-width: 300px;")
+} else
+{
+    cat(sprintf("<p class=\"formulaTxt\">%s</p>", template$formulas[1]))
+}
+```
+
+```{r results='asis'}
+mdImg(template$arrow, mh = 25)
+```
+
+```{r results='asis'}
+if (!is.null(template[["structs"]]))
+{
+    mdImg(template$structs[2], mh = 125, s = "padding 0px 40px; max-width: 300px;")
+} else
+{
+    cat(sprintf("<p class=\"formulaTxt\">%s</p>", template$formulas[2]))
+}
+```
+
+:::
+
+::: {class="row2"}
+
+```{r}
+knitr::kable(template$TPTab, escape = FALSE, format = "html", table.attr = "style='width: 90%;'", col.names = NULL) |>
+    kableExtra::kable_styling(font_size = 10) |>
+    kableExtra::column_spec(1, width = "10em")
+```
+
+
+```{r results='asis'}
+mdImg(template$spec, mh = 500, s = "padding: 0px 20px;")
+```
+
+:::
+

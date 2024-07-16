@@ -1,0 +1,52 @@
+---
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("utils/utils.R")
+```
+
+## Overview
+
+This repository accompanies manuscript DOIXXX and contains the [R] and [patRoon] based data processing scripts and
+algorithms that were used to elucidate transformation products from photodegradation experiments.
+
+The repository layout is as follows:
+
+* `workflow.R`: the main processing script
+* `workflow/` directory: script files that implement the main workflow
+* `utils/` directory: scripts with utility functions used throughout the workflow
+* `report_pd` directory: all support files needed for automatic report generation
+* `misc/` directory: miscellaneous workflow input files (suspect lists, sample info etc)
+* `output/` directory: output files generated throughout the workflow
+    * specifically: `suspects_TPs-compounds.csv` and `suspects_TPs-formulas.csv`: suspect lists generated during TP suspect screening workflows
+* `renv.lock`: an [renv] lockfile to recreate a reproducible R environment
+
+## Used software
+
+### General
+
+Software       | Version | URL
+-------------- | ------- | -------------------------------------
+R              | 4.2.2   | https://www.r-project.org/
+DataAnalysis   | 4.4     | https://www.bruker.com/
+OpenMS         | 2.7     | https://openms.de/
+GenForm        | embededded in patRoon | https://sourceforge.net/projects/genform/
+MetFrag        | 2.5     | http://ipb-halle.github.io/MetFrag/
+BioTransformer | 3.0.0   | http://biotransformer.ca/
+Chemical Transformation Simulator | Accessed online July 19th 2024 | https://qed.epa.gov/cts/
+MolView        | 2.4     | https://molview.org/
+CDK Depict     | --      | https://www.simolecule.com/cdkdepict/depict.html
+OpenBabel      | 3.1.1   | https://github.com/openbabel/openbabel
+Inkscape       | 1.2.2   | https://inkscape.org/
+
+### Used R packages
+
+```{r pkgTab,message=FALSE}
+knitr::kable(getAllRPackages())
+```
+
+[R]: https://www.r-project.org/
+[patRoon]: https://rickhelmus.github.io/patRoon/
+[renv]: https://rstudio.github.io/renv

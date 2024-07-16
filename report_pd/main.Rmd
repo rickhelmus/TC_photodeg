@@ -1,0 +1,306 @@
+---
+title: 'Report R1: Overview of transformation product screening results'
+author: "`r readChar('authors.html', file.size('authors.html'))`"
+output:
+    pagedown::html_letter:
+        css:
+            - default-fonts
+            - default
+            - letter.css
+        toc: true
+        toc_depth: 2
+        number_sections: true
+        self_contained: true
+        mathjax: NULL
+bibliography: references.bib
+csl: "environmental-science-and-technology.csl"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE)
+```
+
+<style>
+
+.row2 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.formulaTxt {
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 25px;
+}
+
+table {
+    margin: 0px;
+}
+
+h1 {
+    font-size: 18pt;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+h2 {
+    font-size: 16pt;
+    margin-block-start: 0.8em;
+    margin-block-end: 0.8em;
+}
+
+h3 {
+    font-size: 12pt;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+h4 {
+    font-size: 11pt;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+/*tbody, ul, p {
+    font-size: 11pt;
+}*/
+
+td {
+    padding: 0px;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+pre {
+    margin: 0px;
+}
+
+ol, ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+body {
+    font-family: serif;
+    font-size: 10pt;
+}
+
+* {
+  /* Override default margins*/
+  --pagedjs-margin-right: 0.8in;
+  --pagedjs-margin-left: 0.8in;
+  --pagedjs-margin-top: 0.6in;
+  --pagedjs-margin-bottom: 0.6in;
+}
+
+/* https://github.com/rstudio/pagedown/issues/89#issuecomment-475915999 */
+a[href^="http"]:not([class="uri"])::after {
+  content: "";
+}
+
+/* to avoid referring to page numbers */
+/*a[href^="#"]:not([class="uri"], [class="leaders"])::after {
+  content: "" !important;
+}*/
+sup a[href^="#"]:not([class="uri"])::after {
+  content: "" !important;
+}
+
+.author {
+    font-weight: normal;
+    font-size: small;
+}
+
+/* don't add additional line spacing above superscripted text: https://stackoverflow.com/a/1530819 */
+sup {
+    vertical-align: top;
+    position: relative;
+    top: -0.5em;
+}
+
+/* BUG: avoid newlines after reference numbers in bibliography --> copied from: https://github.com/rstudio/rmarkdown/issues/1959 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+$if(csl-entry-spacing)$
+  margin-bottom: $csl-entry-spacing$;
+$endif$
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+
+</style>
+
+
+\newpage
+
+# Introduction
+
+This document summarizes the results of the transformation product (TP) screening workflows. The document was
+automatically generated with knitr [@Knitr1;@Knitr2;@Knitr3], Rmarkdown [@Rmarkdown1;@Rmarkdown2;@Rmarkdown3] and
+pagedown [@pagedown], and converted from HTML to PDF format with Chrome [@Chrome]. The full code to generate this report
+and a complete listing of all used software is available in [X].
+
+The sections in this document are organized as follows:
+
+* First level: the screening workflow approach (structure/formula suspect screening and structure/formula unknowns)
+* Second level: the parent compound (flecainide, metoprolol, sulfamethoxazole or phenazone)
+* Third level: candidate TP feature
+* Fourth level: annotation candidates for the TP feature
+
+## Data for candidate TP features
+
+The candidate TP feature sections are named by the feature name assigned by patRoon, which is formatted as MX_RY_Z, with
+X being the m/z (rounded to zero decimal places), Y the retention time in seconds (rounded to zero decimal places) and Z a unique number to discriminate features with
+equal X/Y. The candidate TP feature sections include the following data:
+
+* **Chromatogram**. Displays the peak of the feature from the sample with the highest intensity.
+* **Regression plot**. A scatter plot with regression lines of normalized feature intensity _versus_ initial parent concentration from the mix experiments with significant regression.
+* **Experimental table**. Summarizes relative intensities in the experiments with parent mixture ('mix'), single parents ('single') and dark controls ('dark'). Furthermore, the table contains the correlation coefficient (R<sup>2</sup>) and significance (p) for the tested initial parent concentrations of mix experiments. Each row describes the data for an experiment, and is greyed out if the observed regression was insignificant. Empty cells indicate no observations were available (e.g. feature intensity below threshold). Experimental remarks are shown as superscript numbers, which are explained in Table 1.
+
+Remark                     | Description
+:------------------------: | -------------------------------------------------------------------------------------------------------------------
+<a name="remark-1">\#1</a> | Features removed during post-processing due to high intensity deviation in replicates (>75% RSD).
+<a name="remark-2">\#2</a> | Features removed during post-processing as some were missing in replicates.
+<a name="remark-3">\#3</a> | The feature intensity was below set thresholds and therefore not detected or post-filtered.
+<a name="remark-4">\#4</a> | Poor regression due to high variability caused by low intensity features.
+<a name="remark-5">\#5</a> | Poor regression due to an outlier.
+<a name="remark-6">\#6</a> | Poor regression due to intensity variability caused by poor chromatography.
+<a name="remark-7">\#7</a> | There were two very closely eluting features observed with the same _m/z_ in all experiments. The feature detection algorithm only assigned one of the two features in each sample, and which one was assigned varied across samples. As a result, a negative slope was observed for U and poor regression for UH. Nevertheless, the MS<sup>2</sup> data used for annotation was consistently taken from the second feature, hence, the annotation results reported here only concern this feature.
+<a name="remark-8">\#8</a> | The reported intensity is less accurate due to wrong peak assignment in one out of the two replicates.
+
+
+Table: Table 1. Description of remarks that are referred to inside the experimental tables.
+
+\newpage
+
+## Data for annotation candidates
+
+The annotation candidates are automatically named with a format consisting of four parts:
+
+```
+[SuS|SuF|UnC|UnF]-[FLE|MET|SMX|PHE]-MXXX-Y
+```
+
+The four parts are:
+
+1. the screening type
+    * SuS, SuF: suspect screening of structures or formulas, respectively
+    * UnC, UnF: screening of unknowns from compound and formula candidates, respectively
+2. the parent compound
+    * FLE: flecainide
+    * MET: metoprolol
+    * SMX: sulfamethoxazole
+    * PHE: phenazone
+3. the _m/z_ rounded to zero decimals
+4. a unique numeric identifier to discern TPs with equal rounded mass
+
+For instance, **SuF-MET-M302-1** is the first unique TP candidate with _m/z_ 302 for metoprolol and found by structure suspect screening.
+
+<br>The annotation candidate sections include the following data:
+
+* **Structural transformation** (only for candidates with structure information). This includes highlights of atoms and chemical bonds removed from the parent (greyed out) or different in the TP (marked yellow).
+* **Formula transformation** (only for candidates without structure information).
+* **Summary table**. Summarizes key chemistry, transformation and annotation properties (described in Table 2).
+* **Annotated MS<sup>2</sup> spectrum** (if available). The mass peaks are marked as explained by compound annotation (‘metfrag’), formula annotation (‘genform’), both (‘metfrag,genform’), the unfragmented precursor ion (‘precursor’) or otherwise unexplained (‘unassigned’). Mass peaks are annotated with fragment formulas if available. The _m/z_ axis of the spectrum is zoomed in on the detected MS<sup>2</sup> peaks to improve the readability of the formula annotations.
+
+Property                | Description
+----------------------- | -------------------------------------------------------------------------------
+Formula                 | The formula of the TP and its difference to the parent.
+SMILES                  | The SMILES of the TP (if available).
+_m/z_ error             | The difference between the observed and expected _m/z_.
+XLog P                  | The Log P value (calculated as XLog P with rcdk [@rcdk]) and its difference to the parent.
+Data source(s)          | Data sources such as prediction algorithm, literature references and PubChem [@PubChem] identifiers.
+_In silico_ similarity  | The cosine similarity between the MS<sup>2</sup> spectrum with only annotated peaks and the full MS<sup>2</sup> spectrum. Reported for formula annotations and compound annotations (if available).
+ID confidence level     | The identification confidence level assigned as described in Supporting Information section S1.9.
+Fit, TP_sim, TP_score   | TP similarity and scoring values, as described in the Materials & Method section.
+Other matches           | Names of features that were also matched with this candidate structure/formula.
+
+Table: Table 2. Property descriptions for the summary tables in the annotation candidate sections.
+
+\newpage
+
+## Additional notes and limitations
+
+The graphics for molecular transformation highlight changes in aromaticity, which may lead to unexpected markings in some cases (see e.g. _SuS-MET-M282-5_). Furthermore, since the software used to depict the molecular structures lacks support to fully align parent and TP structures, the orientation of these may differ.
+
+\newpage
+
+```{r echo=FALSE, include=FALSE}
+# mdImg <- function(p, mh = 150) cat(sprintf("![](%s){style=\"max-height: %dpx;\"}\n", p, mh))
+mdImg <- function(p, mh = 150, s = "") cat(sprintf("<img src=\'%s' style=\"max-height: %dpx;%s\"></img>", normalizePath(p), mh, s))
+
+knit <- NULL
+addNewPage <- function(knit) c(knit, knitr::knit_child(text = "\\newpage"))
+
+firstCh <- TRUE
+for (screeningInd in seq_along(reportList))
+{
+    template <- reportList[[screeningInd]]
+    if (length(template) == 0)
+        next
+    
+    if (!firstCh)
+        knit <- addNewPage(knit)
+    else
+        firstCh <- FALSE
+
+    knit <- c(knit, knitr::knit_child("page-scr.Rmd"))
+    
+    firstSec <- TRUE
+    for (parentInd in seq_along(reportList[[screeningInd]]$parents))
+    {
+        template <- reportList[[screeningInd]]$parents[[parentInd]]
+        if (length(template) == 0)
+            next
+        
+        if (!firstSec)
+            knit <- addNewPage(knit)
+        else
+            firstSec <- FALSE
+        knit <- c(knit, knitr::knit_child("page-par.Rmd"))
+        for (featInd in seq_along(reportList[[screeningInd]]$parents[[parentInd]]$features))
+        {
+            if (featInd > 1)
+                knit <- addNewPage(knit)
+            
+            template <- reportList[[screeningInd]]$parents[[parentInd]]$features[[featInd]]
+            knit <- c(knit, knitr::knit_child("page-feat.Rmd"))
+            
+            for (TPInd in seq_along(reportList[[screeningInd]]$parents[[parentInd]]$features[[featInd]]$TPs))
+            {
+                if ((TPInd %% 2) == 0)
+                    knit <- addNewPage(knit)
+                template <- reportList[[screeningInd]]$parents[[parentInd]]$features[[featInd]]$TPs[[TPInd]]
+                knit <- c(knit, knitr::knit_child("page-TP.Rmd"))
+            }
+        }
+    }
+}
+```
+
+```{r, echo=FALSE, results="asis"}
+cat(paste0(knit, collapse = "\n"))
+```
+
+\newpage
+
+# References

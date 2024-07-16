@@ -1,0 +1,3 @@
+```{r results='asis'}
+cat(sprintf("## %s\n\n", template$header))
+```

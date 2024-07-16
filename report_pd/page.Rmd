@@ -1,0 +1,78 @@
+```{r results='asis'}
+cat(sprintf("## %s\n\n", template$header))
+```
+
+::: {style="display: flex; flex-wrap: nowrap; justify-content: space-evenly; align-items: center;"}
+
+```{r results='asis'}
+if (!is.null(template[["structs"]]))
+{
+    mdImg(template$structs[1], mh = 150, s = "padding 0px 40px; max-width: 300px;")
+} else
+{
+    cat(sprintf("<p class=\"formulaTxt\">%s</p>", template$formulas[1]))
+}
+```
+
+```{r results='asis'}
+mdImg(template$arrow, mh = 25)
+```
+
+```{r results='asis'}
+if (!is.null(template[["structs"]]))
+{
+    mdImg(template$structs[2], mh = 150, s = "padding 0px 40px; max-width: 300px;")
+} else
+{
+    cat(sprintf("<p class=\"formulaTxt\">%s</p>", template$formulas[2]))
+}
+```
+
+:::
+
+::: {}
+
+```{r}
+knitr::kable(template$TPTab, escape = FALSE, format = "html", table.attr = "style='width: 90%;'", col.names = NULL) |>
+    kableExtra::kable_styling(font_size = 11) |>
+    kableExtra::column_spec(1, width = "12em")
+```
+
+:::
+
+### Feature
+
+:::: {class="row2"}
+
+```{r results='asis'}
+mdImg(template$chrom, mh = 200)
+```
+
+
+```{r results='asis'}
+# ::: {style="display: flex; flex-direction: column; flex-wrap: wrap; justify-content: center; align-items: center;"}
+# cat(sprintf("<p style=\"text-align: center; margin: 0px; font-size: 14px; border: dotted gray 1px; padding: 1px 10px; border-radius: 5px;\">%s</p>\n\n", template$ann))
+mdImg(template$spec, mh = 200)
+```
+
+::::
+
+### Experiments
+
+::: {class="row2"}
+
+```{r}
+knitr::kable(template$expTab, escape = FALSE, format = "html", align = "lrrr") |>
+    kableExtra::kable_styling(full_width = FALSE, font_size = 11, position = "left") |>
+    kableExtra::column_spec(1, width = "5em") |>
+    kableExtra::column_spec(2, width = "11em") |>
+    kableExtra::column_spec(3:4, width = "6em")
+```
+
+```{r results='asis'}
+mdImg(template$regr, mh = 225)
+```
+
+:::
+
+\newpage
