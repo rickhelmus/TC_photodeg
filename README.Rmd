@@ -9,8 +9,10 @@ source("utils/utils.R")
 
 ## Overview
 
-This repository accompanies manuscript DOIXXX and contains the [R] and [patRoon] based data processing scripts and
-algorithms that were used to elucidate transformation products from photodegradation experiments.
+This repository accompanies the manuscript _"Comprehensive mass spectrometry workflows to systematically elucidate
+transformation processes of organic micropollutants: a case study on photodegradation of four pharmaceuticals"_ and
+contains the [R] and [patRoon] based data processing scripts and algorithms that were used to elucidate transformation
+products from photodegradation experiments.
 
 The repository layout is as follows:
 

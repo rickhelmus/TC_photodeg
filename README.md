@@ -1,7 +1,10 @@
 
 ## Overview
 
-This repository accompanies manuscript DOIXXX and contains the
+This repository accompanies the manuscript *“Comprehensive mass
+spectrometry workflows to systematically elucidate transformation
+processes of organic micropollutants: a case study on photodegradation
+of four pharmaceuticals”* and contains the
 [R](https://www.r-project.org/) and
 [patRoon](https://rickhelmus.github.io/patRoon/) based data processing
 scripts and algorithms that were used to elucidate transformation
