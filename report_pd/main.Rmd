@@ -157,7 +157,7 @@ div.csl-indent {
 This document summarizes the results of the transformation product (TP) screening workflows. The document was
 automatically generated with knitr [@Knitr1;@Knitr2;@Knitr3], Rmarkdown [@Rmarkdown1;@Rmarkdown2;@Rmarkdown3] and
 pagedown [@pagedown], and converted from HTML to PDF format with Chrome [@Chrome]. The full code to generate this report
-and a complete listing of all used software is available in [X].
+and a complete listing of all used software is available in [@ZenRepos].
 
 The sections in this document are organized as follows:
 
