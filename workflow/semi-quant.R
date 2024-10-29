@@ -33,19 +33,19 @@ getSemiQuant <- function(featData, SuSData, unkData, unkFormData, unkCompData, s
         metoprolol = 18750,
         sulfamethoxazole = 18750,
         phenazone = 4688,
-        "1-Amino-3-[4-(2-methoxyethyl)phenoxy]propan-2-ol" = 18750,
-        aniline = 18750,
-        "3-Amino-5-methylisoxazole" = 37500,
-        "p-Aminophenol" = 150000,
+        "1-amino-3-[4-(2-methoxyethyl)phenoxy]propan-2-ol" = 18750,
+        Aniline = 18750,
+        "3-amino-5-methylisoxazole" = 37500,
+        "p-aminophenol" = 150000,
         "Sulfanilic acid" = 150000,
-        "4-Hydroxybenzenesulfonamide" = 150000,
+        "4-hydroxybenzenesulfonamide" = 150000,
         Forbisen = 9375,
         Formanilide = 37500,
-        "N-ethyl-3-hydroxybenzamide" = 37500,
-        "N-Phenylpropanamide" = 9375
+        "n-ethyl-3-hydroxybenzamide" = 37500,
+        "n-phenylpropanamide" = 9375
     )
     quantTab <- quantTab[conc <= upperConcs[name]]
-    quantTab <- quantTab[name != "p-Aminophenol"] # peak elutes prior to waste switch
+    quantTab <- quantTab[name != "p-aminophenol"] # peak elutes prior to waste switch
     quantTab <- quantTab[intensity > 0]
     
     quantTab[, c("RSQ", "residual") := {
