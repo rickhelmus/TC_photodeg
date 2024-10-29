@@ -250,7 +250,7 @@ The graphics for molecular transformation highlight changes in aromaticity, whic
 
 ```{r echo=FALSE, include=FALSE}
 # mdImg <- function(p, mh = 150) cat(sprintf("![](%s){style=\"max-height: %dpx;\"}\n", p, mh))
-mdImg <- function(p, mh = 150, s = "") cat(sprintf("<img src=\'%s' style=\"max-height: %dpx;%s\"></img>", normalizePath(p), mh, s))
+mdImg <- function(p, mh = 150, s = "") cat(sprintf("<img src=\'%s' style=\"max-height: %dpx;%s\"></img>", knitr::image_uri(p), mh, s))
 
 knit <- NULL
 addNewPage <- function(knit) c(knit, knitr::knit_child(text = "\\newpage"))
