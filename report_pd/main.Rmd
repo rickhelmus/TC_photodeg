@@ -149,6 +149,10 @@ div.csl-indent {
 
 </style>
 
+<script>
+// HACK HACK HACK: toggle on authors a bit after loading, to prevent strange page breaks on the title page
+setTimeout(function() { document.getElementById("author_block").style.display="block" }, 1000);
+</script>
 
 \newpage
 
