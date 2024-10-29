@@ -4,7 +4,7 @@ getSuspectsFromFormulas <- function(featData, SuSData, bgMSMS)
     trans <- patRoon:::TPsLogicTransformations
     # and add addition of H2O2
     trans <- rbind(trans, data.frame(transformation = "hydroperoxidation", add = "H2O2", sub = "", retDir = 0))
-    genFormLib <- genFormulaTPLibrary(getParentSuspList(), transformations = trans)
+    genFormLib <- genFormulaTPLibrary(getParentSuspList(), transformations = trans, generations = 2)
     
     # add formula from literature search: https://doi.org/10.1016/j.scitotenv.2016.03.057
     genFormLib <- rbind(genFormLib, data.table::data.table(
@@ -14,7 +14,8 @@ getSuspectsFromFormulas <- function(featData, SuSData, bgMSMS)
         TP_neutralMass = rcdk::get.formula("C10H10N2O4S")@mass,
         generation = 1, retDir = 0
     ), fill = TRUE)
-    TPsForm <- generateTPs("library_formula", parents = getParentSuspList(), TPLibrary = genFormLib)
+    TPsForm <- generateTPs("library_formula", parents = getParentSuspList(), TPLibrary = genFormLib, generations = 2,
+                           matchGenerationsBy = "formula")
     
     # Omit formulas already present as structure
     TPsFormF <- delete(TPsForm, j = function(tab, par, ...) tab$formula %in% SuSData$TPsCons[[par]]$formula)
