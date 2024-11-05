@@ -2152,14 +2152,14 @@
     },
     "patRoon": {
       "Package": "patRoon",
-      "Version": "2.3.2",
+      "Version": "2.3.3",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "patRoon",
       "RemoteUsername": "rickhelmus",
-      "RemoteRef": "2.3.2",
-      "RemoteSha": "7636d9f900f8fe4ea5c4b6e9555bf70a2243fdc3",
+      "RemoteRef": "2.3.3",
+      "RemoteSha": "b2bd90f4001a62c0ad56fc6c645b031e8ad455c0",
       "Requirements": [
         "Biobase",
         "BiocParallel",
@@ -2230,7 +2230,7 @@
         "xcms",
         "yaml"
       ],
-      "Hash": "5753c4a08b71e30535485ff2b8395a84"
+      "Hash": "b1841657f07825cd0221f4ae1b3dc079"
     },
     "pcaMethods": {
       "Package": "pcaMethods",
