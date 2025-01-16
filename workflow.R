@@ -11,11 +11,11 @@ for (f in list.files(c("workflow", "utils"), pattern = "\\.R$", full.names = TRU
 wfData <- list()
 wfData$featData <- getFeatures()
 
-bgMSMS <- getBGMSMSPeaks(analysisInfo(wfData$featData$fGroupsRaw)[analysisInfo(wfData$featData$fGroupsRaw)$group == "MQ", ])
+wfData$bgMSMS <- getBGMSMSPeaks(analysisInfo(wfData$featData$fGroupsRaw)[analysisInfo(wfData$featData$fGroupsRaw)$group == "MQ", ])
 
-wfData$SuSData <- getSuspectsFromStructures(wfData$featData, bgMSMS)
-wfData$SuFData <- getSuspectsFromFormulas(wfData$featData, wfData$SuSData, bgMSMS)
-wfData$unkData <- getUnknownsGeneral(wfData$featData, wfData$SuSData, wfData$SuFData, bgMSMS)
+wfData$SuSData <- getSuspectsFromStructures(wfData$featData, wfData$bgMSMS)
+wfData$SuFData <- getSuspectsFromFormulas(wfData$featData, wfData$SuSData, wfData$bgMSMS)
+wfData$unkData <- getUnknownsGeneral(wfData$featData, wfData$SuSData, wfData$SuFData, wfData$bgMSMS)
 wfData$unkFormData <- getUnknownsFormulas(wfData$unkData, wfData$SuSData)
 wfData$unkCompData <- getUnknownsCompounds(wfData$unkData, wfData$SuSData)
 wfData$confData <- getIDLConfirmations()

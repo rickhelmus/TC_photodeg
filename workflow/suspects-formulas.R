@@ -29,7 +29,7 @@ getSuspectsFromFormulas <- function(featData, SuSData, bgMSMS)
     fGroups <- doScreenSuspects(featData$fGroupsSel, suspListTPs, onlyHits = TRUE)
     
     # the next steps largely follow that of the structure suspects annotation
-    mslists <- getMSPL(fGroups, bgMSMS)
+    mslists <- mslistsNoAnnF <- getMSPL(fGroups, bgMSMS)
     formulas <- getFormulas(fGroups, mslists)
     formulas <- filterFormulasForSusps(fGroups, formulas)
     mslists <- filterMSPLForAnn(mslists, fGroups)
@@ -45,6 +45,7 @@ getSuspectsFromFormulas <- function(featData, SuSData, bgMSMS)
         TPsFormF = TPsFormF,
         fGroups = fGroups,
         mslists = mslists,
+        mslistsNoAnnF = mslistsNoAnnF,
         formulas = formulas,
         componentsTPs = componentsTPs
     ))

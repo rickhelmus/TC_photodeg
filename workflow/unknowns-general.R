@@ -7,7 +7,7 @@ getUnknownsGeneral <- function(featData, SuSData, SuFData, bgMSMS)
                                setdiff(names(fGroups), union(groupNames(SuSData$componentsTPs),
                                                              groupNames(SuFData$componentsTPs))))]
     
-    mslists <- getMSPL(fGroups, bgMSMS)
+    mslists <- mslistsNoAnnF <- getMSPL(fGroups, bgMSMS)
     
     componentsTPs <- generateComponents(fGroups[, suspects = getParentSuspList()$name], "tp", fGroupsTPs = fGroups,
                                         MSPeakLists = mslists, ignoreParents = TRUE)
@@ -37,6 +37,7 @@ getUnknownsGeneral <- function(featData, SuSData, SuFData, bgMSMS)
         fGroups = fGroups,
         componentsTPs = componentsTPs,
         mslists = mslists,
+        mslistsNoAnnF = mslistsNoAnnF,
         formulas = formulas,
         compoundsUF = compoundsUF, compounds = compounds
     ))

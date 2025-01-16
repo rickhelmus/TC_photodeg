@@ -20,7 +20,7 @@ getSuspectsFromStructures <- function(featData, bgMSMS)
     fGroups <- doScreenSuspects(featData$fGroupsSel, suspListTPs, onlyHits = TRUE)
     
     # formula/compound annotation for structure suspects
-    mslists <- getMSPL(fGroups, bgMSMS)
+    mslists <- mslistsNoAnnF <- getMSPL(fGroups, bgMSMS)
     formulas <- getFormulas(fGroups, mslists)
     formulas <- filterFormulasForSusps(fGroups, formulas)
     # make customized compound database for MetFrag, so we don't rely on the presence of the TP suspects in public databases
@@ -94,6 +94,7 @@ getSuspectsFromStructures <- function(featData, bgMSMS)
         TPsCTS = TPsCTS, TPsBTE = TPsBTE, TPsBTH = TPsBTH, TPsPC = TPsPC, TPsLIT = TPsLIT, TPsCons = TPsCons,
         fGroups = fGroups,
         mslists = mslists,
+        mslistsNoAnnF = mslistsNoAnnF,
         formulas = formulas,
         compounds = compounds,
         componentsTPs = componentsTPsF
